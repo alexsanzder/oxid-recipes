@@ -1,0 +1,6 @@
+query Products{
+    products(filter: null, pagination: null, sort: null){
+    id
+    title
+  }
+}
