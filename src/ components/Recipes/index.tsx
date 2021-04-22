@@ -1,6 +1,6 @@
 import { request, gql } from "graphql-request";
 import { useQuery } from "react-query";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const endpoint = "http://127.0.0.1/graphql";
 
@@ -30,12 +30,9 @@ function useProducts() {
     });
 }
 
-const Products = () => {
+const Recipies = () => {
     const { data, isLoading } = useProducts();
 
-    const handelOnClick = () => {
-        //redirct andere view
-    };
     return (
         <div className="container">
             <h1>Best choices</h1>
@@ -46,9 +43,10 @@ const Products = () => {
             {isLoading && <p>Loading ...</p>}
             {data &&
                 data.products?.map((product: any) => (
-                    <div
-                        key={product?.id}
+                    <Link
                         className="flex justify-center px-3 py-6"
+                        key={product?.id}
+                        to={`/recipie/${product?.id}`}
                     >
                         <div className=" justify-betwee relative flex">
                             <img
@@ -73,10 +71,10 @@ const Products = () => {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
         </div>
     );
 };
 
-export default Products;
+export default Recipies;
