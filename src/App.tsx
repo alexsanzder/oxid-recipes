@@ -8,6 +8,7 @@ const queryClient = new QueryClient();
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
+            <h1 className="font-bold">Recepies</h1>
             <Products />
             <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>

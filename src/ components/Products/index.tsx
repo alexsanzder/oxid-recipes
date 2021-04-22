@@ -30,13 +30,21 @@ function useProducts() {
 const Products = () => {
     const { data, isLoading } = useProducts();
 
+    const handelOnClick = () => {
+        //redirct andere view
+    };
     return (
         <>
             {isLoading && <p>Loading ...</p>}
             {data &&
                 data.products?.map((product: any) => (
-                    <div key={product?.id} className="bg-blue-200">
-                        <p>{product?.title}</p>
+                    <div
+                        key={product?.id}
+                        className="bg-gray-100"
+                        onClick={handelOnClick}
+                    >
+                        <img src={product?.img} />
+                        <p className="text-pink-300">{product?.title}</p>
                         <p>{product?.price.price}</p>
                         <hr />
                     </div>
