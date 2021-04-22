@@ -1,6 +1,0 @@
-query Steps{
-    steps(filter: null, pagination: null, sort: null){
-    id
-    title
-  }
-}

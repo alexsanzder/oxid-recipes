@@ -2,6 +2,7 @@ import { request, gql } from "graphql-request";
 import { useQuery } from "react-query";
 import { RouteComponentProps } from "react-router-dom";
 import Ingredients from "../Ingredients";
+import Steps from "../Steps";
 const endpoint = "http://127.0.0.1/graphql";
 
 function useProduct(recipeId: string) {
@@ -48,8 +49,12 @@ const Recipe = ({ match }: RouteComponentProps<Props>) => {
                         {data.product.title}
                     </h1>
                     <Ingredients
-                        // usedtemporally the array of images as prop
+                        // temporally used  the array of images as prop
                         ingredients={data.product.imageGallery.images}
+                    />
+                    <Steps
+                        // temporally used the array of images as prop
+                        steps={data.product.imageGallery.images}
                     />
                 </div>
             )}
