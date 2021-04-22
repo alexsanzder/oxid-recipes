@@ -1,6 +1,0 @@
-query Ingredients{
-    ingredients(filter: null, pagination: null, sort: null){
-    id
-    title
-  }
-}
