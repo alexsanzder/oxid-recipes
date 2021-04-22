@@ -4,13 +4,13 @@ import { RouteComponentProps } from "react-router-dom";
 import Ingredients from "../Ingredients";
 const endpoint = "http://127.0.0.1/graphql";
 
-function useProducts() {
-    return useQuery("products", async () => {
+function useProduct(recipeId: string) {
+    return useQuery(["product", recipeId], async () => {
         const data = await request(
             endpoint,
             gql`
                 query {
-                    products {
+                    product(id: "${recipeId}") {
                         id
                         title
                         price {
@@ -21,6 +21,9 @@ function useProducts() {
                         }
                         imageGallery {
                             thumb
+                            images {
+                                image
+                            }
                         }
                     }
                 }
@@ -30,17 +33,26 @@ function useProducts() {
     });
 }
 
-type TParams = { id: string };
+type Props = { id: string };
 
-const Recipe = ({ match }: RouteComponentProps<TParams>) => {
-    const { data, isLoading } = useProducts();
+const Recipe = ({ match }: RouteComponentProps<Props>) => {
     const { id } = match.params;
-    console.log(id);
+    const { data, isLoading } = useProduct(id);
 
     return (
         <div className="container">
             {isLoading && <p>Loading ...</p>}
-            <Ingredients />
+            {data && (
+                <div>
+                    <h1 className="flex-auto mx-4 my-2 text-3xl font-semibold capitalize">
+                        {data.product.title}
+                    </h1>
+                    <Ingredients
+                        // usedtemporally the array of images as prop
+                        ingredients={data.product.imageGallery.images}
+                    />
+                </div>
+            )}
         </div>
     );
 };

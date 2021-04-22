@@ -1,5 +1,4 @@
-query Products{
-    products(filter: null, pagination: null, sort: null){
+ product(id: $id){
     id
     title
   }

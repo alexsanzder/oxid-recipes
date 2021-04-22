@@ -35,8 +35,8 @@ const Recipies = () => {
 
     return (
         <div className="container">
-            <h1>Best choices</h1>
-            <p>
+            <h1 className="text-3xl font-semibold">Best choices</h1>
+            <p className=" text-xl">
                 This are the hottest recipes right now... What are you waiting
                 for? Try them!
             </p>
@@ -44,19 +44,19 @@ const Recipies = () => {
             {data &&
                 data.products?.map((product: any) => (
                     <Link
-                        className="flex justify-center px-3 py-6"
+                        className="flex justify-center w-full px-3 py-6 mt-6"
                         key={product?.id}
                         to={`/recipie/${product?.id}`}
                     >
-                        <div className=" justify-betwee relative flex">
+                        <div className="justify-betwee relative flex w-full">
                             <img
                                 className="absolute inset-0 object-cover w-32 h-32 border-2 border-green-600 rounded-full"
                                 src={product?.imageGallery.thumb}
                                 alt={product?.title}
                             />
-                            <div className="pl-36 flex-auto w-full p-6 rounded-md shadow-md">
+                            <div className="flex-auto w-full p-6 pl-16 ml-24 rounded-lg shadow-lg">
                                 <div className="flex flex-wrap">
-                                    <h1 className="flex-auto text-xl font-semibold text-red-400">
+                                    <h1 className="flex-auto text-xl font-semibold text-red-400 capitalize">
                                         {product?.title}
                                     </h1>
                                     <div className="text-xl font-semibold text-gray-500">
