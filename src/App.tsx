@@ -12,6 +12,7 @@ function App() {
             <h1 className="font-bold">Recepies</h1>
             <Products />
             <Ingredients />
+            <Steps />
             <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
     );
