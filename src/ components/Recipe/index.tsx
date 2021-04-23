@@ -50,8 +50,9 @@ const Recipe = ({ match }: RouteComponentProps<Props>) => {
                         // title={data.title}
                         // subtitle={data.subtitle}
                         // image={data.product.imageGallery.thumb}
-                        title="title test"
-                        subtitle="subtitle test"
+                        title={data.product.title}
+                        // subtitle="subtitle test"
+                        rating={4}
                     />
                     <Ingredients
                         // temporally used  the array of images as prop

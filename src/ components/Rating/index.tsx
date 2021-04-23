@@ -14,13 +14,13 @@ const Rating: React.FC<RatingProps> = ({ level }) => {
                         className={
                             ratingValue <= level
                                 ? "text-red-400"
-                                : "text-gray-400"
+                                : "text-red-100 opacity-15"
                         }
                         key={1}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="w-6 h-6"
+                            className="w-8 h-8"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                             stroke="none"

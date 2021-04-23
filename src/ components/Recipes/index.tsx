@@ -40,8 +40,8 @@ const Recipies = () => {
                 // title={data.title}
                 // subtitle={data.subtitle}
                 // image={data.category.imageGallery.thumb}
-                title="title test"
-                subtitle="subtitle test"
+                title="Best choices"
+                subtitle="This are the hottest recipes right now... What are you waiting for? Try them!"
             />
             {isLoading && <p>Loading ...</p>}
             {data &&
