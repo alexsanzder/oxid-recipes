@@ -49,7 +49,7 @@ const Recipe = ({ match }: RouteComponentProps<Props>) => {
                     <Header
                         // title={data.title}
                         // subtitle={data.subtitle}
-                        // image={data.product.imageGallery.thumb}
+                        image={data.product.imageGallery.thumb}
                         title={data.product.title}
                         // subtitle="subtitle test"
                         rating={4}

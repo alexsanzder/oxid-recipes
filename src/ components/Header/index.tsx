@@ -3,27 +3,31 @@ import Rating from "../Rating";
 
 type Props = {
     title: string;
-    subtitle?: string | React.Component;
+    subtitle?: string;
     rating?: number;
-    // image: any;
+    image: string;
 };
-const Header: React.FC<Props> = ({ title, subtitle, rating }) => {
+const Header: React.FC<Props> = ({ title, subtitle, rating, image }) => {
     return (
         <>
             <div
-                className=" relative h-56 bg-fixed bg-center bg-no-repeat bg-cover"
+                className="h-72 relative bg-fixed bg-center bg-no-repeat bg-cover"
                 style={{
-                    backgroundImage: `url("https://cdn.bbqpit.de/wp-content/uploads/2018/12/19001134/Spaghetti-Carbonara.jpg")`,
+                    backgroundImage: `url(${image})`,
+                    opacity: 0.9,
                 }}
             >
-                <div className="bg-gradient-to-t from-white h-full px-6 pt-12">
-                    <h1 className="flex-auto my-2 mb-4 text-3xl font-semibold text-white capitalize">
+                <div className="bg-gradient-to-t from-white h-full px-6 pt-10">
+                    <Navigation />
+                    <h1 className="filter drop-shadow-sm flex-auto mb-4 text-3xl font-semibold text-red-900 capitalize">
                         {title}
                     </h1>
                     {rating ? (
                         <Rating level={rating} />
                     ) : (
-                        <p className="text-xl">{subtitle}</p>
+                        <p className="filter drop-shadow text-xl text-red-700">
+                            {subtitle}
+                        </p>
                     )}
                 </div>
             </div>

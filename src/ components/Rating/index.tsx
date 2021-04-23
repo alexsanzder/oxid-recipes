@@ -13,8 +13,8 @@ const Rating: React.FC<RatingProps> = ({ level }) => {
                     <div
                         className={
                             ratingValue <= level
-                                ? "text-red-400"
-                                : "text-red-100 opacity-15"
+                                ? "filter drop-shadow-md text-red-400"
+                                : "filter drop-shadow-md text-gray-300"
                         }
                         key={1}
                     >

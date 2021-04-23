@@ -1,20 +1,21 @@
 import { useHistory } from "react-router-dom";
-type Props = {
-    
-};
-const Navigation: React.FC<Props> = ({ }) => {
+type Props = {};
+const Navigation: React.FC<Props> = ({}) => {
     let history = useHistory();
     return (
         <>
-            <div className="w-full flex justify-between mb-14">
-                <button onClick={() => history.goBack()} className="hover:bg-white hover:text-red-500 focus:outline-none px-4 py-3 mx-4 text-sm font-semibold text-white bg-transparent rounded-lg">
-                    <svg 
-                        viewBox="0 0 32 32" 
-                        className="w-7 h-7" 
+            <div className="flex justify-between w-full mb-10">
+                <button
+                    onClick={() => history.goBack()}
+                    className="hover:bg-white hover:text-red-500 focus:outline-none px-4 pb-1 mx-4 text-sm font-semibold text-white bg-transparent rounded-lg"
+                >
+                    <svg
+                        viewBox="0 0 32 32"
+                        className="w-7 h-7"
                         aria-hidden="true"
                         fill="currentColor"
                     >
-                        <path 
+                        <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth="2"
