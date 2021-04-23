@@ -1,6 +1,7 @@
 import { request, gql } from "graphql-request";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import Header from "../Header";
 
 const endpoint = "http://127.0.0.1/graphql";
 
@@ -35,11 +36,13 @@ const Recipies = () => {
 
     return (
         <div className="container">
-            <h1 className="text-3xl font-semibold">Best choices</h1>
-            <p className=" text-xl">
-                This are the hottest recipes right now... What are you waiting
-                for? Try them!
-            </p>
+            <Header
+                // title={data.title}
+                // subtitle={data.subtitle}
+                // image={data.category.imageGallery.thumb}
+                title="title test"
+                subtitle="subtitle test"
+            />
             {isLoading && <p>Loading ...</p>}
             {data &&
                 data.products?.map((product: any) => (
