@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { RouteComponentProps } from "react-router-dom";
 import Ingredients from "../Ingredients";
 import Steps from "../Steps";
+import Header from "../Header";
 const endpoint = "http://127.0.0.1/graphql";
 
 function useProduct(recipeId: string) {
@@ -45,9 +46,13 @@ const Recipe = ({ match }: RouteComponentProps<Props>) => {
             {isLoading && <p>Loading ...</p>}
             {data && (
                 <div>
-                    <h1 className="flex-auto mx-4 my-2 text-3xl font-semibold capitalize">
-                        {data.product.title}
-                    </h1>
+                   <Header
+                        // title={data.title}
+                        // subtitle={data.subtitle}
+                        // image={data.product.imageGallery.thumb}
+                        title="title test"
+                        subtitle="subtitle test"
+                    />
                     <Ingredients
                         // temporally used  the array of images as prop
                         ingredients={data.product.imageGallery.images}
