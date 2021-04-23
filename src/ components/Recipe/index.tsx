@@ -4,6 +4,7 @@ import { RouteComponentProps } from "react-router-dom";
 import Ingredients from "../Ingredients";
 import Steps from "../Steps";
 import Header from "../Header";
+
 const endpoint = "http://127.0.0.1/graphql";
 
 function useProduct(recipeId: string) {
@@ -36,7 +37,6 @@ function useProduct(recipeId: string) {
 }
 
 type Props = { id: string };
-
 const Recipe = ({ match }: RouteComponentProps<Props>) => {
     const { id } = match.params;
     const { data, isLoading } = useProduct(id);
@@ -46,12 +46,13 @@ const Recipe = ({ match }: RouteComponentProps<Props>) => {
             {isLoading && <p>Loading ...</p>}
             {data && (
                 <div>
-                   <Header
+                    <Header
                         // title={data.title}
                         // subtitle={data.subtitle}
-                        // image={data.product.imageGallery.thumb}
-                        title="title test"
-                        subtitle="subtitle test"
+                        image={data.product.imageGallery.thumb}
+                        title={data.product.title}
+                        // subtitle="subtitle test"
+                        rating={4}
                     />
                     <Ingredients
                         // temporally used  the array of images as prop

@@ -39,9 +39,9 @@ const Recipies = () => {
             <Header
                 // title={data.title}
                 // subtitle={data.subtitle}
-                // image={data.category.imageGallery.thumb}
-                title="title test"
-                subtitle="subtitle test"
+                image="https://cdn.bbqpit.de/wp-content/uploads/2018/12/19001134/Spaghetti-Carbonara.jpg"
+                title="Best choices"
+                subtitle="This are the hottest recipes right now... What are you waiting for? Try them!"
             />
             {isLoading && <p>Loading ...</p>}
             {data &&
