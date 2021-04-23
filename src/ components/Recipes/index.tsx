@@ -5,24 +5,20 @@ import Header from "../Header";
 
 const endpoint = "http://127.0.0.1/graphql";
 
-function useProducts() {
-    return useQuery("products", async () => {
+function useRecipes() {
+    return useQuery("recipes", async () => {
         const data = await request(
             endpoint,
             gql`
                 query {
-                    products {
+                    recipes {
                         id
                         title
-                        price {
-                            price
-                            currency {
-                                sign
-                            }
-                        }
-                        imageGallery {
-                            thumb
-                        }
+                        time
+                        shortDesc
+                        difficulty
+                        picture
+                        rating
                     }
                 }
             `
@@ -32,7 +28,7 @@ function useProducts() {
 }
 
 const Recipies = () => {
-    const { data, isLoading } = useProducts();
+    const { data, isLoading } = useRecipes();
 
     return (
         <div className="container">
@@ -40,27 +36,31 @@ const Recipies = () => {
                 // title={data.title}
                 // subtitle={data.subtitle}
                 image="https://cdn.bbqpit.de/wp-content/uploads/2018/12/19001134/Spaghetti-Carbonara.jpg"
-                title="Best choices"
-                subtitle="This are the hottest recipes right now... What are you waiting for? Try them!"
+                title="Beste Auswahl"
+                subtitle="Dies sind die heißesten Rezepte im Moment ... Worauf warten Sie noch? Versuch sie!"
             />
             {isLoading && <p>Loading ...</p>}
             {data &&
-                data.products?.map((product: any) => (
+                data.recipes?.map((recipe: any) => (
                     <Link
                         className="flex items-center justify-center w-full h-40 px-3 py-6 mt-6"
-                        key={product?.id}
-                        to={`/recipie/${product?.id}`}
+                        key={recipe?.id}
+                        to={`/recipie/${recipe?.id}`}
                     >
                         <div className="relative flex items-center justify-between w-full">
                             <img
                                 className="w-36 h-36 absolute inset-0 object-cover border-2 border-green-600 rounded-full"
-                                src={product?.imageGallery.thumb}
-                                alt={product?.title}
+                                src={
+                                    recipe?.picture
+                                        ? recipe?.picture
+                                        : "https://img.chefkoch-cdn.de/rezepte/1218391227356456/bilder/1248625/crop-960x640/der-beste-kaesekuchen-der-welt.jpg"
+                                }
+                                alt={recipe?.title}
                             />
                             <div className="flex-auto w-full p-5 ml-20 rounded-lg shadow-lg">
                                 <div className="flex pl-16">
                                     <h1 className="flex-auto w-full text-xl font-semibold text-red-400 capitalize">
-                                        {product?.title}
+                                        {recipe?.title}
                                     </h1>
                                 </div>
                                 <div className="grid w-full grid-flow-col grid-cols-3 grid-rows-2 mt-4 text-center text-gray-500">
@@ -82,9 +82,8 @@ const Recipies = () => {
                                     </div>
                                     <div>
                                         <span className="text-lg font-semibold">
-                                            4
+                                            {recipe?.rating}
                                         </span>
-                                        <span className="text-sm">/5</span>
                                     </div>
                                     <div className="mx-auto">
                                         <svg
@@ -103,7 +102,7 @@ const Recipies = () => {
                                         </svg>
                                     </div>
                                     <div className="font-semibold capitalize">
-                                        medium
+                                        {recipe?.difficulty}
                                     </div>
                                     <div className="mx-auto">
                                         <svg
@@ -123,7 +122,7 @@ const Recipies = () => {
                                     </div>
                                     <div>
                                         <span className="text-lg font-semibold">
-                                            20
+                                            {recipe?.time}
                                         </span>
                                         <span className="text-sm"> min</span>
                                     </div>

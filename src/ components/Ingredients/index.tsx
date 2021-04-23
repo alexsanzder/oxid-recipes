@@ -9,21 +9,37 @@ const Ingredients: React.FC<Props> = ({ ingredients }) => {
                     <div className="rounded-r-xl p-6 shadow-xl">
                         <div className="flex flex-wrap">
                             <h1 className="flex-auto mx-4 my-2 text-xl font-semibold">
-                                Ingredients
+                                Zutaten
                             </h1>
                             {ingredients &&
                                 ingredients?.map((ingredient: any) => (
                                     <div className="flex items-center justify-between w-full my-2">
-                                        <div className="flex-1">
-                                            <h2 className="flex-auto inline-block mx-4 text-xl font-semibold">
-                                                ingredient.amount
-                                            </h2>
-                                            <p className="inline mx-4 text-sm">
-                                                cups of water
-                                            </p>
-                                            <p className="inline mx-4 text-sm">
-                                                price
-                                            </p>
+                                        <div className="flex items-center justify-between w-full">
+                                            <div>
+                                                <h2 className="flex-auto inline-block mx-4 text-xl font-semibold">
+                                                    {ingredient.amount}
+                                                </h2>
+                                                <p className="inline mx-4 text-sm">
+                                                    {ingredient.product.title}
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p className="inline mx-4 text-sm">
+                                                    <span className=" text-gray-500">
+                                                        {
+                                                            ingredient.product
+                                                                .price.currency
+                                                                .sign
+                                                        }
+                                                    </span>{" "}
+                                                    <span className="text-lg font-semibold">
+                                                        {
+                                                            ingredient.product
+                                                                .price.price
+                                                        }
+                                                    </span>
+                                                </p>
+                                            </div>
                                         </div>
                                         <button className="hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-pink-900 px-4 py-3 mx-4 text-sm font-semibold text-white bg-red-400 rounded-lg">
                                             <svg

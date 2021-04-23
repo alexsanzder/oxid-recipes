@@ -22,13 +22,10 @@ const Header: React.FC<Props> = ({ title, subtitle, rating, image }) => {
                     <h1 className="filter drop-shadow-sm flex-auto mb-4 text-3xl font-semibold text-red-900 capitalize">
                         {title}
                     </h1>
-                    {rating ? (
-                        <Rating level={rating} />
-                    ) : (
-                        <p className="filter drop-shadow text-xl text-red-700">
-                            {subtitle}
-                        </p>
-                    )}
+                    {rating && <Rating level={rating} />}
+                    <p className="filter drop-shadow mt-2 text-xl text-red-700">
+                        {subtitle}
+                    </p>
                 </div>
             </div>
         </>

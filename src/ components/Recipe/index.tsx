@@ -7,27 +7,37 @@ import Header from "../Header";
 
 const endpoint = "http://127.0.0.1/graphql";
 
-function useProduct(recipeId: string) {
-    return useQuery(["product", recipeId], async () => {
+function useRecipes(recipeId: string) {
+    return useQuery(["recipes", recipeId], async () => {
         const data = await request(
             endpoint,
             gql`
                 query {
-                    product(id: "${recipeId}") {
+                    recipe(id: "${recipeId}") {
+                        ingredients {
+                            id
+                            product {
+                                id
+                                title
+                                price {
+                                    price
+                                        currency {
+                                            sign
+                                    }
+                                }
+                            }
+                            amount
+                        }
+                        steps {
+                            number
+                            text
+                        }
                         id
                         title
-                        price {
-                            price
-                            currency {
-                                sign
-                            }
-                        }
-                        imageGallery {
-                            thumb
-                            images {
-                                image
-                            }
-                        }
+                        time
+                        shortDesc
+                        difficulty
+                        picture
                     }
                 }
             `
@@ -39,7 +49,7 @@ function useProduct(recipeId: string) {
 type Props = { id: string };
 const Recipe = ({ match }: RouteComponentProps<Props>) => {
     const { id } = match.params;
-    const { data, isLoading } = useProduct(id);
+    const { data, isLoading } = useRecipes(id);
 
     return (
         <div className="container">
@@ -47,20 +57,18 @@ const Recipe = ({ match }: RouteComponentProps<Props>) => {
             {data && (
                 <div>
                     <Header
-                        // title={data.title}
-                        // subtitle={data.subtitle}
-                        image={data.product.imageGallery.thumb}
-                        title={data.product.title}
-                        // subtitle="subtitle test"
+                        image={data.recipe.picture}
+                        title={data.recipe.title}
+                        subtitle={data.recipe.shortDesc}
                         rating={4}
                     />
                     <Ingredients
                         // temporally used  the array of images as prop
-                        ingredients={data.product.imageGallery.images}
+                        ingredients={data.recipe.ingredients}
                     />
                     <Steps
                         // temporally used the array of images as prop
-                        steps={data.product.imageGallery.images}
+                        steps={data.recipe.steps}
                     />
                 </div>
             )}
