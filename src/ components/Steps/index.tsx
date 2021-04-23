@@ -17,17 +17,10 @@ const Steps: React.FC<Props> = ({ steps }) => {
                                     <div className="w-full my-2">
                                         <p className="inline-flex text-sm">
                                             <h2 className="inline-block mx-4 text-xl font-semibold text-red-400">
-                                                1.
+                                                step.pos
                                             </h2>
                                             <p className="flex-auto inline-block mx-8 text-xl">
-                                                Lorem ipsum dolor sit amet,
-                                                consetetur sadipscing elitr, sed
-                                                diam nonumy eirmod tempor
-                                                invidunt ut labore et dolore
-                                                magna aliquyam erat, sed diam
-                                                voluptua. At vero eos et accusam
-                                                et justo duo dolores et ea
-                                                rebum.
+                                                step.description
                                             </p>
                                         </p>
                                     </div>

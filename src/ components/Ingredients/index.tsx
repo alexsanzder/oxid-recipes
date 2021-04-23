@@ -16,7 +16,7 @@ const Ingredients: React.FC<Props> = ({ ingredients }) => {
                                     <div className="flex items-center justify-between w-full my-2">
                                         <div className="flex-1">
                                             <h2 className="flex-auto inline-block mx-4 text-xl font-semibold">
-                                                3
+                                                ingredient.amount
                                             </h2>
                                             <p className="inline mx-4 text-sm">
                                                 cups of water
